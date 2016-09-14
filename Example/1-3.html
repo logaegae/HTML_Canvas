@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>My First Canvas App</title>
-    <script src="modernizr-1.6.min.js"></script>
+    <script src="../lib/js/modernizr.js"></script>
 
     <script type="text/javascript">
     window.addEventListener("load", eventWindowLoaded, false);
@@ -24,7 +24,7 @@
     }
 
     function canvasSupport() {
-      return modernizr.canvas;
+      return Modernizr.canvas;
     }
 
     function canvasApp () {
@@ -44,7 +44,7 @@
 
         //문자
         context.fillStyle = "#000000";
-        context.font = "20px_sans";
+        context.font = "20px _sans";
         context.textBaseline = "top";
         context.fillText("Hello World~!", 195, 80);
 

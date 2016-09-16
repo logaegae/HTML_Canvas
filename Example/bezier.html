@@ -32,40 +32,28 @@
                 drawScreen();
                 function drawScreen(){
                     //그리는 부분
-                    context.strokeStyle = "tomato";
-                    context.lineWidth = 10;
-                    context.lineCap = "butt";
-                    context.beginPath();
-                    context.moveTo(20,10);
-                    context.lineTo(100,10);
-                    context.stroke();
-                    context.closePath();
-
-                    context.strokeStyle = "#A0A0C0";
-                    context.lineWidth = 10;
-                    context.lineCap = "square";
+                    context.fillStyle="tomato";
+                    context.fillRect(10,10,480,480);
+                    context.strokeStyle="#FFF";
+                    context.lineWidth=10;
                     context.beginPath();
                     context.moveTo(20,20);
-                    context.lineTo(100,20);
+                    context.bezierCurveTo(20,100,200,100,200,20);
+
+                    context.moveTo(150,20);
+                    context.bezierCurveTo(0,145,300,195,150,320);
+
                     context.stroke();
                     context.closePath();
 
 
-                    context.strokeStyle = "#F0A0C0";
-                    context.lineWidth = 10;
-                    context.lineCap = "round";
-                    context.beginPath();
-                    context.moveTo(20,210);
-                    context.lineTo(100,210);
-                    context.stroke();
-                    context.closePath();
 
                 }
             }
         </script>
     </head>
     <body>
-        <div style="position:absolute;top:50px;left:50px;">
+        <div style="position:absolute;top:50px;left:50px;border:1px #000 dashed;">
             <canvas id="canvas" width="500" height="500">
                 Your browser does not support HTML5 Canvas.
             </canvas>

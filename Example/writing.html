@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html leng="kr">
+    <head>
+        <meta charset="utf-8">
+        <title>writing</title>
+        <style>
+        body{width:100%;height:100%;background-color: #FFF;}
+
+        </style>
+        <script src="../lib/js/modernizr.js"></script>
+        <script>
+            window.addEventListener('load',windowLoadedEvent,false);
+            var Debugger = function(){};
+            Debugger.log = function(message){
+                try{
+                    console.log(message);
+                }catch(exception){
+                    return;
+                }
+            };
+            Debugger.log("hello")
+            function windowLoadedEvent(){
+                canvasApp();
+            }
+            function canvasSupport(){
+                return Modernizr.canvas;
+            }
+
+            function canvasApp(){
+                if(!canvasSupport()) return;
+                else{
+                    var theCanvas = document.getElementById('canvas');
+                    var context = theCanvas.getContext('2d');
+                }
+                drawScreen();
+                function drawScreen(){
+                    context.fillStyle="tomato"
+                    context.fillRect(10,10,480,480);
+
+                    context.strokeStyle="#FFF";
+                    context.lineWidth=10;
+                    context.lineCap="rect";
+                    context.lineJoin="bevel";
+
+                    //ㅋ
+                    context.beginPath();
+                    context.moveTo(20,50);
+                    context.lineTo(60,50);
+                    context.lineTo(60,90);
+                    context.moveTo(30,70);
+                    context.lineTo(55,70);
+                    context.stroke();
+                    context.closePath();
+
+                    //ㅐ
+                    context.beginPath();
+                    context.moveTo(85,45);
+                    context.lineTo(85,90);
+                    context.moveTo(90,70);
+                    context.lineTo(100,70);
+                    context.moveTo(105,45);
+                    context.lineTo(105,90);
+                    context.stroke();
+                    context.closePath();
+
+                    //ㄴ
+                    context.beginPath();
+                    context.moveTo(60,100);
+                    context.lineTo(60,120);
+                    context.lineTo(110,120);
+                    context.stroke();
+                    context.closePath();
+
+                    //ㅂ
+                    context.beginPath();
+                    context.moveTo(130,45);
+                    context.lineTo(130,85);
+                    context.lineTo(165,85);
+                    context.lineTo(165,45);
+                    context.moveTo(135,70);
+                    context.lineTo(165,70);
+                    context.stroke();
+                    context.closePath();
+
+                    //ㅓ
+                    context.beginPath();
+                    context.moveTo(200,45);
+                    context.lineTo(200,90);
+                    context.moveTo(180,70);
+                    context.lineTo(205,70);
+                    context.stroke();
+                    context.closePath();
+
+                    //스
+                    context.beginPath();
+                    context.moveTo(225,85);
+                    context.lineTo(250,45);
+                    context.lineTo(275,85);
+                    context.moveTo(225,105);
+                    context.lineTo(275,105);
+                    context.stroke();
+                    context.closePath();
+
+                    //로
+                    context.beginPath();
+                    context.moveTo(300,45);
+                    context.lineTo(345,45);
+                    context.lineTo(345,65);
+                    context.lineTo(305,65);
+                    context.lineTo(305,85);
+                    context.lineTo(350,85);
+                    context.moveTo(325,95);
+                    context.lineTo(325,105);
+                    context.moveTo(300,105);
+                    context.lineTo(350,105)
+                    context.stroke();
+                    context.closePath();
+
+                    //글
+                    context.beginPath();
+                    context.moveTo(40,160);
+                    context.lineTo(90,160);
+                    context.lineTo(90,190);
+                    context.moveTo(40,200);
+                    context.lineTo(95,200);
+                    context.moveTo(40,215);
+                    context.lineTo(90,215);
+                    context.lineTo(90,235);
+                    context.lineTo(45,235);
+                    context.lineTo(45,255);
+                    context.lineTo(95,255);
+                    context.stroke();
+                    context.closePath();
+                    //쓰
+                    context.beginPath();
+                    context.moveTo(135,200);
+                    context.lineTo(150,160);
+                    context.lineTo(165,200);
+                    context.lineTo(180,160);
+                    context.lineTo(195,200);
+                    context.moveTo(135,220);
+                    context.lineTo(195,220);
+                    context.stroke();
+                    context.closePath();
+
+                    //기
+                    context.beginPath();
+                    context.moveTo(220,160);
+                    context.lineTo(260,160);
+                    context.lineTo(260,200);
+                    context.moveTo(280,155);
+                    context.lineTo(280,200);
+                    context.stroke();
+                    context.closePath();
+
+                }
+
+            }
+
+        </script>
+    </head>
+    <body>
+        <div style="border:1px #000 dashed;width:500px;height:500px;position:absolute;top:20px;left:20x;">
+            <canvas id="canvas" width="500px" height="00px">
+                브라우저가 캔버스를 지원하지 않습니다.
+            </canvas>
+        </div>
+
+    </body>
+</html>

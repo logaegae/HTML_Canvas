@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html leng="kr">
     <head>
-        <meta charset="UTF-8">
-        <title>Basic Structure</title>
+        <meta charset="utf-8">
+        <title>arc</title>
         <script src="../lib/js/modernizr.js"></script>
-        <script>
-            window.addEventListener('load',eventWindowLoaded, false);
+        <script type="text/javascript">
+            window.addEventListener('load',eventWindowLoaded,false);
             var Debugger = function(){};
             Debugger.log = function(message){
                 try{
                     console.log(message);
-                }catch (exception){
+                }catch(exception){
                     return;
                 }
             }
@@ -21,27 +21,39 @@
             function canvasSupport(){
                 return Modernizr.canvas;
             }
-            Debugger.log("Hello");
+            Debugger.log("text")
             function canvasApp(){
-                if(!canvasSupport) return;
+                Debugger.log(!canvasSupport())
+                if(!canvasSupport()) return;
                 else{
-                    var theCanvas = document.getElementById("canvas");
-                    var context = theCanvas.getContext("2d");
+                    var theCanvas = document.getElementById('canvas');
+                    var context = theCanvas.getContext('2d');
                 }
-
                 drawScreen();
                 function drawScreen(){
-                    //그리는 부분
+                    context.beginPath();
+                    context.strokeStyle = "tomato";
+                    context.lineWidth = 5;
+                    context.arc(50,50,20,0,2*Math.PI,false);
+                    context.moveTo(120,100);
+                    context.arc(100,100,20,0,Math.PI,true);
+                    context.stroke();
+                    context.closePath();
 
+                    context.beginPath();
+                    context.moveTo(200,200);
+                    context.lineTo(250,200);
+                    context.arcTo(300,200,300,250,50)
+                    context.lineTo(300,350)
+                    context.stroke();
+                    context.closePath();
                 }
             }
         </script>
     </head>
     <body>
-        <div style="position:absolute;top:50px;left:50px;">
-            <canvas id="canvas" width="500" height="500">
-                Your browser does not support HTML5 Canvas.
-            </canvas>
+        <div style="position:absolute;border:1px #000 dashed; top:50px; left:50px;">
+            <canvas id="canvas" width="500" height="500"></canvas>
         </div>
     </body>
 </html>

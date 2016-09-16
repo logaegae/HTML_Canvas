@@ -23,7 +23,7 @@
             }
             Debugger.log("Hello");
             function canvasApp(){
-                if(!canvasSupport) return;
+                if(!canvasSupport()) return;
                 else{
                     var theCanvas = document.getElementById("canvas");
                     var context = theCanvas.getContext("2d");

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+        	background: #333;
+        }
+        /*가운데 정렬*/
+        #canvas {
+        	display: block;
+        	width: 300px;
+        	margin: 100px auto;
+        }
+
+    </style>
+    <script>
+        window.onload = function(){
+            //캔버스 초기화
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            //변수
+            var W = canvas.width;
+            var H = canvas.height;
+            var degrees = 0;
+            var new_degrees = 0;
+            var difference = 0;
+            var color = "lightgreen"; //green looks better to me
+            var bgcolor = "#222";
+            var text;
+            var animation_loop, redraw_loop;
+
+            function init()
+            {
+                //바탕 그리기
+                ctx.clearRect(0, 0, W, H);
+
+                //배경 원 그리기
+                ctx.beginPath();
+                ctx.strokeStyle = bgcolor;
+                ctx.lineWidth = 30;
+                ctx.arc(W/2, H/2, 100, 0, Math.PI*2, false);
+                ctx.stroke();
+
+                //게이지 원 그리기
+                var radians = degrees * Math.PI / 180;
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 30;
+                //0도에서 게이지 시작
+                ctx.arc(W/2, H/2, 100, 0 - 90*Math.PI/180, radians - 90*Math.PI/180, false);
+                ctx.stroke();
+
+                //텍스트
+                ctx.fillStyle = color;
+                ctx.font = "50px bebas";
+                text = Math.floor(degrees/360*100) + "%";
+                //텍스트넓이 측정
+                text_width = ctx.measureText(text).width;
+                //텍스트 가운데 정렬
+                ctx.fillText(text, W/2 - text_width/2, H/2 + 15);
+            }
+
+            function draw()
+            {
+                //새로 그려야 될 경우 애니메이션 멈춤
+                if(typeof animation_loop != undefined) clearInterval(animation_loop);
+
+                //랜덤 게이지
+                new_degrees = Math.round(Math.random()*360);
+                difference = new_degrees - degrees;
+
+                //기존 각도와의 차이만큼 함수 반복 실행
+                animation_loop = setInterval(animate_to, 1000/difference);
+            }
+
+            //움직이는 함수
+            function animate_to()
+            {
+                //새로 지정한 각도에 도달할 때 까지 1만큼 움직임
+                if(degrees == new_degrees)
+                    clearInterval(animation_loop);
+
+                if(degrees < new_degrees)
+                    degrees++;
+                else
+                    degrees--;
+
+                init();
+            }
+
+            draw();
+            // redraw_loop = setInterval(draw, 2000);
+
+    }
+    </script>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="300">
+</body>
+
+</html>
